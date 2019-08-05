@@ -11,7 +11,7 @@ variable "kops_acm_san_domains" {
 
 resource "aws_acm_certificate" "default" {
   count                     = "${var.kops_acm_enabled ? 1 : 0}"
-  domain_name               = "*.${var.region}.${var.zone_name}"
+  domain_name               = "*.${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
   validation_method         = "DNS"
   subject_alternative_names = ["${var.kops_acm_san_domains}"]
   tags                      = "${var.tags}"
