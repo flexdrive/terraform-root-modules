@@ -55,7 +55,7 @@ module "kops_efs_provisioner" {
   region             = "${var.region}"
   availability_zones = ["${split(",", data.aws_ssm_parameter.kops_availability_zones.value)}"]
   zone_id            = "${local.kops_zone_id}"
-  cluster_name       = "${var.region}.${var.zone_name}"
+  cluster_name       = "${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
 
   encrypted        = "${var.efs_encrypted}"
   performance_mode = "${var.efs_performance_mode}"
@@ -64,7 +64,7 @@ module "kops_efs_provisioner" {
   provisioned_throughput_in_mibps = "${var.efs_provisioned_throughput_in_mibps}"
 
   tags = {
-    Cluster = "${var.region}.${var.zone_name}"
+    Cluster = "${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
   }
 }
 

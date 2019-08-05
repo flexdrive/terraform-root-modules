@@ -3,11 +3,11 @@ module "kops_external_dns" {
   namespace      = "${var.namespace}"
   stage          = "${var.stage}"
   name           = "external-dns"
-  cluster_name   = "${var.region}.${var.zone_name}"
+  cluster_name   = "${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
   dns_zone_names = "${var.dns_zone_names}"
 
   tags = {
-    Cluster = "${var.region}.${var.zone_name}"
+    Cluster = "${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
   }
 }
 

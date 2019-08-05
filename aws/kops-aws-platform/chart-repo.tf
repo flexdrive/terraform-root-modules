@@ -3,11 +3,11 @@ module "kops_chart_repo" {
   namespace       = "${var.namespace}"
   stage           = "${var.stage}"
   name            = "chart-repo"
-  cluster_name    = "${var.region}.${var.zone_name}"
+  cluster_name    = "${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
   permitted_nodes = "${var.permitted_nodes}"
 
   tags = {
-    Cluster = "${var.region}.${var.zone_name}"
+    Cluster = "${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
   }
 }
 
