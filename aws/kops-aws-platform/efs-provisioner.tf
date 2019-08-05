@@ -32,10 +32,10 @@ module "kops_efs_provisioner" {
   region             = "${var.region}"
   availability_zones = ["${split(",", data.aws_ssm_parameter.kops_availability_zones.value)}"]
   zone_id            = "${local.kops_zone_id}"
-  cluster_name       = "${var.region}.${var.zone_name}"
+  cluster_name       = "${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
 
   tags = {
-    Cluster = "${var.region}.${var.zone_name}"
+    Cluster = "${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
   }
 }
 
