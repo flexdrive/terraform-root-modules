@@ -8,11 +8,11 @@ module "kops_alb_ingress" {
   namespace    = "${var.namespace}"
   stage        = "${var.stage}"
   name         = "alb-ingress"
-  cluster_name = "${var.region}.${var.zone_name}"
+  cluster_name = "${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
   enabled      = "${var.kops_alb_ingress_enabled}"
 
   tags = {
-    Cluster = "${var.region}.${var.zone_name}"
+    Cluster = "${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
   }
 }
 

@@ -3,6 +3,12 @@ variable "aws_assume_role_arn" {
   description = "AWS IAM Role for Terraform to assume during operation"
 }
 
+variable "cluster_name_prefix" {
+  type        = "string"
+  default     = ""
+  description = "Prefix to add before parent DNS zone name to identify this cluster, e.g. `us-east-1`. Defaults to `var.region`"
+}
+
 variable "region" {
   type        = "string"
   description = "AWS region"
