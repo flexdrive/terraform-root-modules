@@ -98,7 +98,7 @@ module "efs_backup" {
   name                               = "${var.name}"
   stage                              = "${var.stage}"
   namespace                          = "${var.namespace}"
-  region                             = "${var.aws_region2}"
+  region                             = "us-west-2"
   vpc_id                             = "${var.vpc_id}"
   efs_mount_target_id                = "${element(module.efs.mount_target_ids, 0)}"
   use_ip_address                     = "${var.use_efs_ip_address}"
