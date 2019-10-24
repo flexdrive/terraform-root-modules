@@ -25,8 +25,7 @@ data "aws_availability_zones" "available" {}
 # }
 
 module "jenkins" {
-  source = "src"
-  #source      = "git::https://github.com/cloudposse/terraform-aws-jenkins.git?ref=0.11/master"
+  source      = "git::https://github.com/cloudposse/terraform-aws-jenkins.git?ref=0.11/master"
   namespace   = "garage"
   name        = "builds"
   stage       = "dev1"
@@ -34,7 +33,7 @@ module "jenkins" {
 
   master_instance_type         = "t2.medium"
   aws_account_id               = "978904061259"
-  aws_region                   = "us-west-1"
+  aws_region                   = "us-west-2"
   availability_zones           = ["${slice(data.aws_availability_zones.available.names, 0, var.max_availability_zones)}"]
   vpc_id                       = "${module.vpc.vpc_id}"
   zone_id                      = "Z2BWKHP4YKSTQZ"

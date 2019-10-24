@@ -17,7 +17,6 @@ variable "domain_name" {
 }
 
 module "certificate" {
-  # source = "module"
   source = "git::https://github.com/cloudposse/terraform-aws-acm-request-certificate.git?ref=0.11/master"
   domain_name                      = "${var.domain_name}"
   process_domain_validation_options = "true"
