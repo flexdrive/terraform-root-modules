@@ -1,7 +1,9 @@
 terraform {
   required_version = ">= 0.11.2"
 
-  backend "s3" {}
+  backend "s3" {
+    region="us-west-1"
+  }
 }
 
 variable "aws_assume_role_arn" {}
