@@ -25,7 +25,8 @@ data "aws_availability_zones" "available" {}
 # }
 
 module "jenkins" {
-  source      = "git::https://github.com/cloudposse/terraform-aws-jenkins.git?ref=0.11/master"
+  source = "src"
+  #source      = "git::https://github.com/cloudposse/terraform-aws-jenkins.git?ref=0.11/master"
   namespace   = "garage"
   name        = "builds"
   stage       = "dev1"
