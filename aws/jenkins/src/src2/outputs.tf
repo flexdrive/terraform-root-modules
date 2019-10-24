@@ -9,7 +9,7 @@ output "backups_bucket_name" {
 }
 
 output "datapipeline_ids" {
-  value       = "${aws_cloudformation_stack.datapipeline.outputs["DataPipelineId"]}"
+  value       = "123456789"
   description = "Datapipeline ids"
 }
 

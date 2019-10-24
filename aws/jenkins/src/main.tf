@@ -92,8 +92,7 @@ module "efs" {
   tags       = "${var.tags}"
 }
 
-# EFS backup to S3
-/* 
+# EFS backup to S3 
 module "efs_backup" {
   source                             = "src2"
   name                               = "${var.name}"
@@ -110,7 +109,7 @@ module "efs_backup" {
   delimiter                          = "${var.delimiter}"
   attributes                         = ["${compact(concat(var.attributes, list("efs-backup")))}"]
   tags                               = "${var.tags}"
-} */
+}
 
 # CodePipeline/CodeBuild to build Jenkins Docker image, store it to a ECR repo, and deploy it to Elastic Beanstalk running Docker stack
 module "cicd" {
