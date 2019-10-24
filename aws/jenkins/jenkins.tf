@@ -14,6 +14,17 @@ variable "max_availability_zones" {
 #   tags = "${merge(var.tags, map("Purpose", "Devops"))}"
 # }
 
+variable "configz" {
+  type        = "map"
+  description = "Additional tags"
+  default     = {
+    instance_type = "t2.medium"
+    email         = "hasan.soneji@flexdrive.com"
+    period        = "12 hours"
+    timeout       = "60 Minutes"
+  }
+}
+
 data "aws_availability_zones" "available" {}
 
 # module "acm_cert" {
@@ -48,12 +59,12 @@ module "jenkins" {
   github_repo_name    = "jenkins"
   github_branch       = "master"
 
-  datapipeline_config = {
-    instance_type = "t2.medium"
-    email         = "hasan.soneji@flexdrive.com"
-    period        = "12 hours"
-    timeout       = "60 Minutes"
-  }
+  datapipeline_config = "${var.configz}"
+  #   instance_type = "t2.medium"
+  #   email         = "hasan.soneji@flexdrive.com"
+  #   period        = "12 hours"
+  #   timeout       = "60 Minutes"
+  # }
 
   env_vars = {
     JENKINS_USER          = "admin"
