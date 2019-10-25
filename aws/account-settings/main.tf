@@ -11,11 +11,12 @@ provider "aws" {
 }
 
 module "account_settings" {
-  source    = "git::https://github.com/cloudposse/terraform-aws-iam-account-settings.git?ref=tags/0.1.0"
+  source    = "git::https://github.com/cloudposse/terraform-aws-iam-account-settings.git"
   namespace = "${var.namespace}"
   stage     = "${var.stage}"
   name      = "${var.name}"
   enabled   = "${var.enabled}"
 
   minimum_password_length = "${var.minimum_password_length}"
+  password_policy_enabled = "${var.password_policy_enabled}"
 }
