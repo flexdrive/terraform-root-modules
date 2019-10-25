@@ -6,6 +6,11 @@ variable "minimum_password_length" {
   default = "8"
 }
 
+variable "password_policy_enabled" {
+  description = "Whether or not to create the IAM account password policy"
+  default     = "true"
+}
+
 variable "aws_assume_role_arn" {
   type = "string"
 }
