@@ -44,7 +44,7 @@ module "subnets" {
 }
 
 module "eks_cluster" {
-  source                  = "git::https://github.com/cloudposse/terraform-aws-eks-cluster.git?ref=0.11/master"
+  source                  = "git::https://github.com/cloudposse/terraform-aws-eks-cluster.git?ref=tags/0.1.1"
   namespace               = "${var.namespace}"
   stage                   = "${var.stage}"
   name                    = "${var.name}"
@@ -58,7 +58,7 @@ module "eks_cluster" {
 }
 
 module "eks_workers" {
-  source                             = "git::https://github.com/cloudposse/terraform-aws-eks-workers.git?ref=0.11/master"
+  source                             = "git::https://github.com/cloudposse/terraform-aws-eks-workers.git?ref=tags/0.1.1"
   namespace                          = "${var.namespace}"
   stage                              = "${var.stage}"
   name                               = "${var.name}"
