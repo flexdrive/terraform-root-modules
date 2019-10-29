@@ -44,7 +44,7 @@ module "ssh_key_pair" {
   namespace            = "${var.namespace}"
   stage                = "${var.stage}"
   name                 = "${var.name}"
-  attributes           = ["${coalesce(var.resource_region, var.region)}"]
+  attributes           = ["${coalesce(var.cluster_name_prefix, var.resource_region, var.region)}"]
   ssm_path_prefix      = "${local.chamber_service}"
   rsa_bits             = "${var.ssh_key_rsa_bits}"
   ssh_key_algorithm    = "${var.ssh_key_algorithm}"
