@@ -27,13 +27,13 @@ variable "configz" {
 
 data "aws_availability_zones" "available" {}
 
-# module "acm_cert" {
-#   source                            = "git::https://github.com/cloudposse/terraform-aws-acm-request-certificate.git?ref=0.11/master"
-#   domain_name                       = "garage.flexdriveplatforms.com"
-#   process_domain_validation_options = true
-#   ttl                               = "300"
-#   subject_alternative_names         = ["*.garage.flexdriveplatforms.com"]
-# }
+module "acm_cert" {
+  source                            = "git::https://github.com/cloudposse/terraform-aws-acm-request-certificate.git?ref=0.11/master"
+  domain_name                       = "garage.flexdriveplatforms.com"
+  process_domain_validation_options = true
+  ttl                               = "300"
+  subject_alternative_names         = ["*.garage.flexdriveplatforms.com"]
+}
 
 module "jenkins" {
   source = "mod"
