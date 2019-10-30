@@ -20,6 +20,18 @@ variable "name" {
   description = "Name  (e.g. `app` or `cluster`)"
 }
 
+variable "region" {
+  type        = "string"
+  default     = ""
+  description = "AWS region for resources. Can be overriden by `resource_region` and `state_store_region`"
+}
+
+variable "resource_region" {
+  type        = "string"
+  default     = ""
+  description = "Region where to create region-specific resources. Defaults to `var.region`"
+}
+
 variable "delimiter" {
   type        = "string"
   default     = "-"

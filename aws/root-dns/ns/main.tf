@@ -35,6 +35,7 @@ data "terraform_remote_state" "stage" {
     role_arn = "${local.role_arn_values[0]}"
     bucket   = "${module.label.id}"
     key      = "${var.key}"
+    region   = "${coalesce(var.resource_region, var.aws_region)}"
   }
 }
 

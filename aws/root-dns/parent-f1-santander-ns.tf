@@ -4,6 +4,7 @@ module "f1-santander" {
   namespace        = "${var.namespace}"
   stage            = "f1-santander"
   zone_id          = "${aws_route53_zone.parent_dns_zone.zone_id}"
+  resource_region  = "eu-central-1"
 }
 
 output "f1-santander_name_servers" {
