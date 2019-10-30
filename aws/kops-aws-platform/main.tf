@@ -13,12 +13,12 @@ provider "aws" {
 module "kops_metadata" {
   source       = "git::https://github.com/cloudposse/terraform-aws-kops-data-network.git?ref=tags/0.1.1"
   enabled      = "${var.flow_logs_enabled}"
-  cluster_name = "${var.region}.${var.zone_name}"
+  cluster_name = "${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
 }
 
 module "kops_metadata_iam" {
   source       = "git::https://github.com/cloudposse/terraform-aws-kops-data-iam.git?ref=tags/0.1.0"
-  cluster_name = "${var.region}.${var.zone_name}"
+  cluster_name = "${coalesce(var.cluster_name_prefix, var.region)}.${var.zone_name}"
 }
 
 resource "aws_default_security_group" "default" {
